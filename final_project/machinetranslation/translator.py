@@ -6,16 +6,16 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-apikey = os.environ['MY3ZS8siRrGUydE6RtLCw7c5uRvFARrELVDT6ossi86Q']
-url = os.environ['https://api.us-south.language-translator.watson.cloud.ibm.com/instances/6550b837-7d26-43e8-b6c6-aa7345fe2741']
+#apikey = os.environ['apikey']
+#url = os.environ['url']
 
-authenticator = IAMAuthenticator('{apikey}')
+authenticator = IAMAuthenticator('MY3ZS8siRrGUydE6RtLCw7c5uRvFARrELVDT6ossi86Q')
 language_translator = LanguageTranslatorV3(
-    version='{version}',
+    version='2018-05-01',
     authenticator=authenticator
 )
 #set service url to US South Dallas
-language_translator.set_service_url('{url}')
+language_translator.set_service_url('https://api.us-south.language-translator.watson.cloud.ibm.com/instances/6550b837-7d26-43e8-b6c6-aa7345fe2741')
 # disabling SSL for self signed cert
 language_translator.set_disable_ssl_verification(True)
 
@@ -31,8 +31,8 @@ def englishToFrench(englishText):
 #French to English
 def frenchToEnglish(frenchText):
     #write the code here
-    frenchText = language_translator.translate(
-    text= englishText,
-    model_id='en-fr').get_result()
+    englishText = language_translator.translate(
+    text= frenchText,
+    model_id='fr-en').get_result()
     
     return englishText
