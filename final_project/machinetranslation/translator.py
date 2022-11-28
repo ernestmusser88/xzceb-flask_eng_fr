@@ -17,24 +17,24 @@ language_translator.set_service_url('https://api.us-south.language-translator.wa
 def english_to_french(english_text):
     """convert english to french"""
     if english_text is not None:
+        
         #Call Translation Service
         translation = language_translator.translate(
         text= english_text,
         model_id='en-fr').get_result()
-        #Access translated response
-        french_text = translation['translations'][0]['translation']
-        return french_text
+        
+        return translation['translations'][0]['translation']
     return None
 
 #French to English
 def french_to_english(french_text):
     """convert french to english"""
     if french_text is not None:
+        
         #Call Translation Service
         translation = language_translator.translate(
         text= french_text,
         model_id='fr-en').get_result()
-        #Access translated response
-        english_text = translation['translations'][0]['translation']
-        return english_text
+        
+        return translation['translations'][0]['translation']
     return None
